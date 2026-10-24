@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { PostComponent } from './shared/components/post/post';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, PostComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

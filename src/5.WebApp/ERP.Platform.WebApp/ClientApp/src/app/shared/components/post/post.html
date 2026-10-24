@@ -1,0 +1,7 @@
+ @if (loading) { <p>در حال بارگذاری...</p> }
+    @if (error) { <p>{{ error }}</p> }
+    <ul>
+      @for (post of posts; track post) {
+        <li>{{ post }}</li>
+      }
+    </ul>

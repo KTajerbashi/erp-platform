@@ -11,6 +11,10 @@ public class Program
 
         builder.Services.AddRazorPages();
 
+        builder.Services
+            .AddReverseProxy()
+            .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+
         var app = builder.Build();
 
         app.MapDefaultEndpoints();
@@ -31,6 +35,8 @@ public class Program
 
         app.MapRazorPages()
            .WithStaticAssets();
+
+        app.MapReverseProxy();
 
         app.Run();
     }
