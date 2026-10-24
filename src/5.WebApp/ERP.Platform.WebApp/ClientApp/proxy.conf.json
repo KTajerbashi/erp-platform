@@ -1,0 +1,48 @@
+
+{
+  "/swagger": {
+    "target": "https://localhost:4221",
+    "secure": false,
+    "changeOrigin": true,
+    "proxyTimeout": 10000,
+    "headers": {
+      "Connection": "Keep-Alive"
+    }
+  },
+  "/Identity": {
+    "target": "https://localhost:4221",
+    "secure": false,
+    "changeOrigin": true,
+    "proxyTimeout": 10000,
+    "headers": {
+      "Connection": "Keep-Alive"
+    }
+  },
+  "/api": {
+    "target": "https://localhost:4221",
+    "secure": false,
+    "changeOrigin": true,
+    "proxyTimeout": 10000,
+    "headers": {
+      "Connection": "Keep-Alive"
+    }
+  },
+  "/weatherforecast": {
+    "target": "https://localhost:4221",
+    "secure": false,
+    "changeOrigin": true,
+    "proxyTimeout": 10000,
+    "headers": {
+      "Connection": "Keep-Alive"
+    }
+  },
+  "/WeatherForecast": {
+    "target": "https://localhost:4221",
+    "secure": false,
+    "changeOrigin": true,
+    "proxyTimeout": 10000,
+    "headers": {
+      "Connection": "Keep-Alive"
+    }
+  }
+}
