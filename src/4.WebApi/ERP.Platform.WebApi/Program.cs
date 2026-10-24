@@ -1,16 +1,20 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new() { Title = "ERP Platform API", Version = "v1" });
+});
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();   // JSON at /openapi/v1.json
+    app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/openapi/v1.json", "My API v1");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "ERP Platform API v1");
         options.RoutePrefix = "swagger";
     });
 }

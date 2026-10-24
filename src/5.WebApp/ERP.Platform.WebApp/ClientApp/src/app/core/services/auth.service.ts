@@ -1,3 +1,4 @@
+
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -8,33 +9,51 @@ export interface IJsonRes<T> {
   message: string;
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
+
   private http = inject(HttpClient);
-  private baseUrl = `api/Auth/`;
+
+  private baseUrl = 'api/Auth';
 
   getAll(): Observable<IJsonRes<string[]>> {
-    return this.http.get<IJsonRes<string[]>>(this.baseUrl);
+
+    const params = new HttpParams()
+      .set('second', 50);
+
+    return this.http.get<IJsonRes<string[]>>(
+      this.baseUrl,
+      {
+        params,
+        timeout: 60000
+      }
+    );
   }
 
   getById(id: number): Observable<string> {
-    return this.http.get<string>(`${this.baseUrl}/${id}`);
+
+    return this.http.get<string>(
+      `${this.baseUrl}/${id}`,
+      {
+        timeout: 60000
+      }
+    );
   }
 
   search(userId: number): Observable<string[]> {
-    const params = new HttpParams().set('userId', userId);
-    return this.http.get<string[]>(this.baseUrl, { params });
+
+    const params = new HttpParams()
+      .set('userId', userId);
+
+    return this.http.get<string[]>(
+      this.baseUrl,
+      {
+        params,
+        timeout: 60000
+      }
+    );
   }
 
-  create(post: Omit<string, 'id'>): Observable<string> {
-    return this.http.post<string>(this.baseUrl, post);
-  }
-
-  update(id: number, post: Partial<string>): Observable<string> {
-    return this.http.put<string>(`${this.baseUrl}/${id}`, post);
-  }
-
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
-  }
 }

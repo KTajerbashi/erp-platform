@@ -1,3 +1,4 @@
+using ERP.Platform.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
@@ -7,15 +8,12 @@ namespace ERP.Platform.WebApi.Controllers
     [Route("api/[controller]")]
     public abstract class BaseController : Controller
     {
-        public override OkObjectResult Ok([ActionResultObjectValue] object? value)
-        {
-            return base.Ok(new
+        protected OkObjectResult OkResponse<T>(T? value, string message = "Success")
+            => Ok(new ApiResponse<T>
             {
-                isSuccess = true,
-                data = value,
-                message = "Success"
+                IsSuccess = true,
+                Data = value,
+                Message = message
             });
-        }
-
     }
 }
