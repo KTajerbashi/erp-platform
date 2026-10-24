@@ -19,5 +19,7 @@
     <Project Path="src/6.Aspire/ERP-Platform.AppHost/ERP-Platform.AppHost.csproj" />
     <Project Path="src/6.Aspire/ERP-Platform.ServiceDefaults/ERP-Platform.ServiceDefaults.csproj" />
   </Folder>
-  <Folder Name="/src/Shared/" />
+  <Folder Name="/src/Shared/">
+    <Project Path="src/Shared/ERP-Platform.Shared.Kernel/ERP-Platform.Shared.Kernel.csproj" Id="f6402938-bc8b-4319-997b-dd55b32c03e2" />
+  </Folder>
 </Solution>
