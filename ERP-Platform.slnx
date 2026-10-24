@@ -1,1 +1,23 @@
-<Solution />
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/1.Domain/">
+    <Project Path="src/1.Domain/ERP.Platform.Core.Domain/ERP.Platform.Core.Domain.csproj" Id="e4ad8509-1fbf-4c34-8366-90d07513f596" />
+  </Folder>
+  <Folder Name="/src/2.Applications/">
+    <Project Path="src/2.Applications/ERP.Platform.Core.Application/ERP.Platform.Core.Application.csproj" Id="4bd2ea7b-4027-4322-8e87-e63385b4ac68" />
+  </Folder>
+  <Folder Name="/src/3.Infrastructure/">
+    <Project Path="src/3.Infrastructure/ERP.Platform.Infrastructure.Data/ERP.Platform.Infrastructure.Data.csproj" Id="89508620-214b-4019-a2d6-b75591572459" />
+  </Folder>
+  <Folder Name="/src/4.WebApi/">
+    <Project Path="src/4.WebApi/ERP.Platform.WebApi/ERP.Platform.WebApi.csproj" Id="1f87f716-e989-4cfc-86ca-7f6fd44b6e7d" />
+  </Folder>
+  <Folder Name="/src/5.WebApp/">
+    <Project Path="src/5.WebApp/ERP.Platform.WebApp/ERP.Platform.WebApp.csproj" />
+  </Folder>
+  <Folder Name="/src/6.Aspire/">
+    <Project Path="src/6.Aspire/ERP-Platform.AppHost/ERP-Platform.AppHost.csproj" />
+    <Project Path="src/6.Aspire/ERP-Platform.ServiceDefaults/ERP-Platform.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/" />
+</Solution>
