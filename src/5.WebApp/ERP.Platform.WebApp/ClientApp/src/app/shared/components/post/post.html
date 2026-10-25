@@ -1,7 +1,57 @@
- @if (loading) { <p>در حال بارگذاری...</p> }
-    @if (error) { <p>{{ error }}</p> }
-    <ul>
+<div class="container">
+  @if (loading) {
+    <div class="state state--loading">
+      <span class="spinner"></span>
+      <p>در حال بارگذاری...</p>
+      <span class="timer">{{ formatDuration(liveElapsedMs) }}</span>
+    </div>
+  }
+
+  @if (error) {
+    <div class="state state--error">
+      <p>{{ error }}</p>
+    </div>
+  }
+
+  @if (requestDate) {
+    <div class="timing" [class.timing--done]="!loading">
+      <div class="timing__item">
+        <span class="timing__label">درخواست</span>
+        <span class="timing__value">
+          {{ requestDate | date: 'HH:mm:ss.SSS' }}
+        </span>
+      </div>
+
+      <div class="timing__item">
+        <span class="timing__label">پاسخ</span>
+        <span class="timing__value">
+          @if (responseDate) {
+            {{ responseDate | date: 'HH:mm:ss.SSS' }}
+          } @else {
+            —
+          }
+        </span>
+      </div>
+
+      <div class="timing__item timing__item--duration">
+        <span class="timing__label">مدت</span>
+        <span class="timing__value">
+          {{ formatDuration(loading ? liveElapsedMs : elapsedMs) }}
+        </span>
+      </div>
+    </div>
+  }
+
+  @if (!loading && posts.length) {
+    <ul class="list">
       @for (post of posts; track post) {
-        <li>{{ post }}</li>
+        <li class="list-item">
+          <span class="badge badge--date">{{ post.date }}</span>
+          <span class="badge badge--summary">{{ post.summary }}</span>
+          <span class="badge badge--temp badge--c">{{ post.temperatureC }}°C</span>
+          <span class="badge badge--temp badge--f">{{ post.temperatureF }}°F</span>
+        </li>
       }
     </ul>
+  }
+</div>

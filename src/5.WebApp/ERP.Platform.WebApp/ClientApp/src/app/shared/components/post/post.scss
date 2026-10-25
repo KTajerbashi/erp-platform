@@ -1,0 +1,207 @@
+:root {
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --border: #e5e9f0;
+  --text: #1f2937;
+  --text-muted: #6b7280;
+  --primary: #4f46e5;
+  --primary-soft: #eef2ff;
+  --success: #059669;
+  --success-soft: #ecfdf5;
+  --danger: #dc2626;
+  --danger-soft: #fef2f2;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.04),
+            0 8px 24px rgba(16, 24, 40, 0.06);
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ---------- State blocks ---------- */
+.state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  box-shadow: var(--shadow);
+}
+
+.state--loading {
+  background: var(--surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.state--error {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid #fecaca;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid var(--primary-soft);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.timer {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
+  margin-inline-start: auto;
+}
+
+/* ---------- Timing panel ---------- */
+.timing {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  padding: 0.85rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s ease;
+}
+
+.timing--done { border-color: #d3d9e3; }
+
+.timing__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-inline: 1rem;
+  border-inline-start: 1px solid var(--border);
+
+  &:first-child { border-inline-start: none; padding-inline-start: 0; }
+}
+
+.timing__label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.timing__value {
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.timing__item--duration .timing__value {
+  color: var(--success);
+  font-weight: 700;
+}
+
+/* ---------- List ---------- */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: 140px 1fr auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+              border-color 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: #d3d9e3;
+    box-shadow: 0 4px 8px rgba(16, 24, 40, 0.06),
+                0 12px 32px rgba(16, 24, 40, 0.08);
+  }
+}
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge--date {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.badge--summary {
+  justify-content: flex-start;
+  background: transparent;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.badge--temp {
+  font-variant-numeric: tabular-nums;
+  background: var(--success-soft);
+  color: var(--success);
+  min-width: 68px;
+}
+
+.badge--f {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .list-item {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "date summary"
+      "c    f";
+    gap: 0.6rem;
+  }
+
+  .badge--date    { grid-area: date;   justify-self: start; }
+  .badge--summary { grid-area: summary; justify-self: end; }
+  .badge--c       { grid-area: c; }
+  .badge--f       { grid-area: f; }
+
+  .timing__item {
+    flex: 1 1 40%;
+    padding-inline: 0;
+    border-inline-start: none;
+  }
+}
